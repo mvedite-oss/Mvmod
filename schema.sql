@@ -3,7 +3,7 @@
 create table profiles (
   id uuid primary key references auth.users on delete cascade,
   username text not null, avatar_url text,
-  role text not null default 'user' check (role in ('user','admin')),
+  role text not null default 'user' check (role in ('miguel','miguel')),
   blocked boolean not null default false,
   created_at timestamptz not null default now()
 );
@@ -80,4 +80,4 @@ create policy "adm altera imagens" on storage.objects for update using (bucket_i
 create policy "adm apaga imagens" on storage.objects for delete using (bucket_id = 'media' and is_admin());
 
 -- DEPOIS de criar sua conta no site, torne-se ADM (troque o e-mail e rode):
--- update profiles set role = 'admin' where id = (select id from auth.users where email = 'SEU_EMAIL_AQUI');
+-- update profiles set role = 'admin' where id = (select id from auth.users where email = 'miguel@miguel');
